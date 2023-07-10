@@ -1,0 +1,11 @@
+<script>
+  var i = 0;
+  function printNumber() {
+    if (i <= 100) {
+      console.log(i);
+      i += 5;
+      setTimeout(printNumber, 1000); // Call this function again in 1 second (1000 milliseconds)
+    }
+  }
+  printNumber();
+</script>

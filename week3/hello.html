@@ -1,0 +1,38 @@
+<span id="showtext"></span>
+<!-- <span id="nothing"></span> -->
+<input type="number" id="sales_amount" />
+<button onclick="showAmount()">Click</button>
+
+<script>
+  let greeting = "Grace Hopper";
+  // const hh = "<h1>jjj<h1>";
+  document.querySelector("#showtext").innerHTML = greeting;
+  // document.querySelector("#nothing").innerHTML = hh;
+  function showAmount() {
+    console.log(
+      parseFloat(document.querySelector("#sales_amount").value).toFixed(2)
+    );
+
+    if (document.querySelector("#sales_amount").value === "") {
+      alert("Please enter a value");
+      document.querySelector("#sales_amount").focus();
+    }
+    // const today = new Date();
+    // alert(today.toDateString());
+    // alert(today.getFullYear());
+    // alert(today.getDate());
+    // alert(today.getMonth());
+
+    getFirstNameAndLastName();
+  }
+
+  function getFirstNameAndLastName() {
+    const nameUpper = greeting.toUpperCase();
+    const nameLength = greeting.length;
+    const index = greeting.indexOf(" ");
+    const firstName = greeting.substr(0, index);
+    const lastName = greeting.substr(index, nameLength);
+    console.log("FirstName = " + firstName);
+    console.log(`LastName = ${lastName}`);
+  }
+</script>
