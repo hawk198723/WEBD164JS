@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f3f3f3;
+        font-family: 'Arial', sans-serif;
+      }
+      
+      table {
+        border-collapse: collapse;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      td {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      td:hover {
+        background-color: #9cf180;
+      }
+
+      input {
+        width: 100%;
+        border: none;
+        text-align: right;
+        padding: 5px;
+        font-size: 18px;
+      }
+    </style>
+    </style>
+    <script>
+      function calculate(numEntered) {
+        if (numEntered == "C") {
+          document.getElementById("answer").value = "";
+        } else if (numEntered == "=") {
+          document.getElementById("answer").value = eval(
+            document.getElementById("answer").value
+          );
+        } else {
+          document.getElementById("answer").value += numEntered;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td colspan="3"><input type="text" id="answer" disabled="" /></td>
+          <td onclick="calculate('C');">C</td>
+        </tr>
+        <tr>
+          <td onclick="calculate(1);">1</td>
+          <td onclick="calculate(2);">2</td>
+          <td onclick="calculate(3);">3</td>
+          <td onclick="calculate('+')">+</td>
+        </tr>
+        <tr>
+          <td onclick="calculate(4);">4</td>
+          <td onclick="calculate(5);">5</td>
+          <td onclick="calculate(6);">6</td>
+          <td onclick="calculate('-')" ;>-</td>
+        </tr>
+        <tr>
+          <td onclick="calculate(7);">7</td>
+          <td onclick="calculate(8);">8</td>
+          <td onclick="calculate(9);">9</td>
+          <td onclick="calculate('*');">×</td>
+        </tr>
+        <tr>
+          <td onclick="calculate(0);">0</td>
+          <td onclick="calculate('.');">.</td>
+          <td onclick="calculate('=')" ;>=</td>
+          <td onclick="calculate('/')" ;>÷</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

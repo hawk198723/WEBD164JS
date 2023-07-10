@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adding Two Nums</title>
+  </head>
+  <body>
+    <span id="result"></span>
+    <script>
+      let num1 = Number(prompt("Enter the first number:"));
+      alert(
+        "The first number your entered is: " +
+          num1 +
+          ". Please Hit Enter or click OK Button to continue"
+      );
+      let num2 = Number(prompt("Enter the second number:"));
+      alert(
+        "The second number your entered is: " +
+          num2 +
+          ". Please hit Enter key or click OK Button to get the result."
+      );
+      let sum = num1 + num2;
+      document.getElementById("result").innerHTML =
+        "You entered: " + num1 + " + " + num2 + " which equals " + sum + ".";
+    </script>
+  </body>
+</html>
