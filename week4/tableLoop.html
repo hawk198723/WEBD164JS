@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      td {
+        border: 1px solid black;
+        padding: 10px;
+      }
+      .same {
+        color: green;
+      }
+      .col {
+        color: red;
+      }
+      .row {
+        color: blue;
+      }
+      .operator {
+        color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="multiplicationTable"></table>
+
+    <script>
+      var table = document.getElementById("multiplicationTable");
+
+      for (var i = 0; i < 11; i++) {
+        var row = document.createElement("tr");
+        for (var j = 0; j < 11; j++) {
+          var cell = document.createElement("td");
+          if (i === 0 && j === 0) {
+            cell.textContent = "x";
+            cell.className = "operator";
+          } else if (i === 0) {
+            cell.textContent = j;
+            cell.className = "row";
+          } else if (j === 0) {
+            cell.textContent = i;
+            cell.className = "col";
+          } else {
+            cell.textContent = i * j;
+            if (i === j) {
+              cell.className = "same";
+            }
+          }
+          row.appendChild(cell);
+        }
+        table.appendChild(row);
+      }
+    </script>
+  </body>
+</html>
