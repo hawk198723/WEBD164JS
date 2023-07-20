@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="firstChild.html" method="get"></form>
+    <label for="email_address">Email</label>
+    <input type="text" id="email_address" />
+    <span id="email_error">*</span>
+    <label>&nbsp;</label>
+    <input type="button" id="join_list" value="Join our List" />
+    <script>
+      var errorText = document.getElementById("email_error").firstChild.nodeValue;
+      document.getElementById("email_error").firstChild.nodeValue = "Entry is invalid";
+    </script>
+  </body>
+</html>

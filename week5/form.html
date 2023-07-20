@@ -1,0 +1,112 @@
+<!-- Using nothing but the DOM, validate the attached html using nothing but
+javascript so that at all inputs have at least something entered, checked or
+selected. That means no html5 form validation's "required" attribute. Try
+looping through all elements in the form and evaluating what type they are
+before you test whether there is a value or whether radio buttons or checkboxes
+have a checked property of "true" Your user has nothing but Internet Explorer 6! -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <title>Validate me</title>
+    <script>
+      function clearDefaultText(id, defaultText) {
+        var element = document.getElementById(id);
+        if (element.value == defaultText) {
+          element.value = "";
+        }
+      }
+
+      function validateMe() {
+        var formElements = document.forms[0].elements;
+        for (var i = 0; i < formElements.length; i++) {
+          var element = formElements[i];
+          switch (element.type) {
+            case "text":
+              if (element.value == "") {
+                alert("Please fill out your name.");
+                return false;
+              }
+              break;
+
+            case "radio":
+            case "checkbox":
+              var name = element.name;
+              var radios = document.getElementsByName(name);
+              var checked = false;
+              for (var j = 0; j < radios.length; j++) {
+                if (radios[j].checked) {
+                  checked = true;
+                  break;
+                }
+              }
+              if (!checked) {
+                alert("Please select " + name + ".");
+                return false;
+              }
+              i += radios.length - 1;
+              break;
+            case "select-one":
+              if (element.value == "") {
+                alert("Please select a favorite show.");
+                return false;
+              }
+              break;
+            case "textarea":
+              if (element.value == "" || element.value == "Enter Comments") {
+                alert("Please fill out comment.");
+                return false;
+              }
+              break;
+          }
+        }
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    At least one piece of data has to come in from every input type.
+    <form action="" method="get" onsubmit="return validateMe();">
+      <br />
+      Name:<input
+        type="text"
+        id="test"
+        name="fullname"
+        placeholder="Enter Full Name"
+      /><br />
+      Gender:<br />
+      Male<input type="radio" name="gender" value="male" />Female<input
+        type="radio"
+        name="gender"
+        value="female"
+      /><br />
+      Hobbies<br />
+      Baseball
+      <input type="checkbox" name="hobbies[]" value="baseball" /> Football
+      <input type="checkbox" name="hobbies[]" value="football" /> Hockey
+      <input type="checkbox" name="hobbies[]" value="hockey" /><br />
+      Favorite Show
+      <select name="show">
+        <option value="">Choose Below</option>
+        <option value="ATHF">Aqua Teen Hunger Force</option>
+        <option value="Family Guy">Family Guy</option>
+        <option value="Simpsons">Simpsons</option></select
+      ><br />
+      Comments<br />
+      <textarea
+        cols="50"
+        rows="6"
+        id="comments"
+        name="comments"
+        onclick="clearDefaultText('comments', 'Enter Comments')"
+      >
+Enter Comments</textarea
+      ><br />
+      <input type="submit" name="submit" value="enter me" />
+    </form>
+    <script>
+      console.log(document.forms[0]);
+    </script>
+  </body>
+</html>
