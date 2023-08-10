@@ -39,12 +39,12 @@ search.addEventListener("click", () => {
     })
     .then((json) => {
       // for testing API data in the console
-      console.log("API response:", json);
+      // console.log("API response:", json);
 
-      console.log("main:", json.main);
-      console.log("weather:", json.weather);
-      console.log("humidity:", json.main.humidity);
-      console.log("speed:", json.wind.speed);
+      // console.log("main:", json.main);
+      // console.log("weather:", json.weather);
+      // console.log("humidity:", json.main.humidity);
+      // console.log("speed:", json.wind.speed);
 
       // Check the API response
       if (json.cod === 404 || json.cod === "404") {
@@ -66,9 +66,6 @@ search.addEventListener("click", () => {
         console.error("Unknown API response:", json);
         return;
       }
-
-      // error404.style.display = "none";
-      // error404.classList.remove("fadeIn");
 
       // Update the UI elements to show weather data
       const image = document.querySelector(".weather-box img");
