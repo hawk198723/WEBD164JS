@@ -1,9 +1,19 @@
 // Defining the main DOM elements
 const container = document.querySelector(".container");
+const searchInput = document.querySelector(".search-box input");
 const search = document.querySelector(".search-box button");
 const weatherBox = document.querySelector(".weather-box");
 const weatherDetails = document.querySelector(".weather-details");
 const error404 = document.querySelector(".not-found");
+
+// Adding event listener to trigger search on 'Enter' key press
+searchInput.addEventListener("keyup", (event) => {
+  if (event.keyCode === 13) {
+    // keycode 13 is for the 'Enter' on the keyboard
+    event.preventDefault();
+    search.click(); // Programmatically trigger the click event of the search button
+  }
+});
 
 // Add a click event to the search button
 search.addEventListener("click", () => {
@@ -29,12 +39,12 @@ search.addEventListener("click", () => {
     })
     .then((json) => {
       // for testing API data in the console
-      // console.log("API response:", json);
+      console.log("API response:", json);
 
-      // console.log("main:", json.main);
-      // console.log("weather:", json.weather);
-      // console.log("humidity:", json.main.humidity);
-      // console.log("speed:", json.wind.speed);
+      console.log("main:", json.main);
+      console.log("weather:", json.weather);
+      console.log("humidity:", json.main.humidity);
+      console.log("speed:", json.wind.speed);
 
       // Check the API response
       if (json.cod === 404 || json.cod === "404") {
@@ -85,6 +95,12 @@ search.addEventListener("click", () => {
           break;
         case "Haze":
           image.src = "images/haze.png";
+          break;
+        case "Mist":
+          image.src = "images/mist.png";
+          break;
+        case "Thunderstorm":
+          image.src = "images/thunderstorm.png";
           break;
         default:
           image.src = "";
